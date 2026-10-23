@@ -36,9 +36,9 @@ Status values distinguish implementation from evidence. **Migrated—requires fu
 | F30 | Crisp Ink draw/select/move/point edit/recolor/taper/split-erase/rasterize | Vector paths, outline renderer and editor | Not migrated — vector engine required |
 | F31 | PNG/JPEG/WebP/GIF import and embedded project assets | Migrated—requires further testing — ImageIO import/assets tested; WebP/plugin acceptance pending | Not migrated — compatibility planned |
 | F32 | Scaled PNG/JPEG/WebP export, transparency and quality | Migrated—requires further testing — scaled PNG/JPEG export tested; remaining formats/UI pending | Not migrated — compatibility planned |
-| F33 | SVG with real Crisp Ink vectors and explicit raster fallback | Versioned SVG exporter; no raster mislabeled as vector | Not migrated — compatibility planned |
+| F33 | SVG with real Crisp Ink vectors and explicit raster fallback | Migrated—requires further testing — real Ink SVG paths/raster fallback tested; viewer parity pending | Not migrated — compatibility planned |
 | F34 | `.carbon` v1 save/open/Save As/Copy/duplicate | Migrated—requires further testing — v1 codec/save core tested; complete UI/workflows pending | Not migrated — compatibility planned |
-| F35 | `.carboncomic` multi-page save/open | Nested Carbon pages and index validation | Not migrated — compatibility planned |
+| F35 | `.carboncomic` multi-page save/open | Migrated—requires further testing — nested multi-page codec tested; comic UI/cross-acceptance pending | Not migrated — compatibility planned |
 | F36 | Autosave, hidden/lifecycle save and session recovery | Migrated—requires further testing — recovery files/restore tested; lifecycle/UI acceptance pending | Not migrated — persistence planned |
 | F37 | Recents and Project Library open/rename/duplicate/delete/export/search/pin/sort | JDBC project repository and library UI | Not migrated — persistence planned |
 | F38 | Multiple documents, tabs, close guards and session restore | Migrated—requires further testing — tabs/lifecycle core and close guards; session restore/GUI pending | Not migrated — lifecycle planned |
@@ -56,21 +56,21 @@ Status values distinguish implementation from evidence. **Migrated—requires fu
 | F50 | Dock/floating panels, layouts and floating tool palette | Persisted workspace model and controls | Not migrated — UI feature |
 | F51 | Configurable shortcuts and Ctrl+K command palette | Shortcut service, editor and searchable commands | Not migrated — UI feature |
 | F52 | Stylus pressure/tilt, palm rejection and touch gestures | Native input adapter and physical-device acceptance | Blocked for first increment — JavaFX lacks Pointer Events pressure/tilt contract |
-| F53 | 40 themes, custom themes, v1/v2 JSON validation and contrast | Extracted `themes.json`, Java theme service/editor | Not migrated — resource ported; workflows pending |
+| F53 | 40 themes, custom themes, v1/v2 JSON validation and contrast | Migrated—requires further testing — 40 themes, v1/v2 validation and JDBC customs; editor/UI pending | Not migrated — resource ported; workflows pending |
 | F54 | Carbon Home, local coast artwork and optional surf motion | JavaFX Home and licensed/source assets | Not migrated — UI feature |
 | F55 | Offline Quick Start and fresh editable sample | Guide and sample-document factory | Not migrated — UI feature |
 | F56 | Diagnostics, release archive, About and Project Information | Headless/UI diagnostics and original credits/copy | Not migrated — verification UI |
 | F57 | Local-first durable settings and metadata | Migrated—requires further testing — JDBC settings/palettes/migrations tested; full app wiring pending | Not migrated — foundation planned |
 | F58 | Verified writes, overwrite protection and invalid/newer file rejection | Migrated—requires further testing — atomic/rejection tests; GUI overwrite acceptance pending | Not migrated — compatibility planned |
 | F59 | Responsive large-canvas behavior and off-UI-thread work | Tile history, bounded caches and background services | Not migrated — performance acceptance required |
-| F60 | Reproducible Windows runtime and optional EXE installer | `jpackage` scripts, CI and independent Windows launch | Not migrated — Windows packaging required |
+| F60 | Reproducible Windows runtime and optional EXE installer | Migrated—requires further testing — jpackage script and Windows CI; artifact/launch not yet run | Not migrated — Windows packaging required |
 
 ## Current totals
 
 - Feature groups identified: **60**.
 - Migrated and verified: **0**.
-- Migrated but requires further testing: **22**.
+- Migrated but requires further testing: **26**.
 - Blocked for the first increment: **1** (F52; full stylus/tilt hardware contract).
-- Not migrated: **37**.
+- Not migrated: **33**.
 
-These totals reflect the 2026-10-23 core checkpoint: 26 focused JUnit tests passed. No row is fully verified yet because UI, cross-compatibility, or platform acceptance remains. Update both rows and totals only with new evidence.
+These totals reflect the 2026-10-23 core checkpoint: 35 focused JUnit tests passed. No row is fully verified yet because UI, cross-compatibility, or platform acceptance remains. Update both rows and totals only with new evidence.

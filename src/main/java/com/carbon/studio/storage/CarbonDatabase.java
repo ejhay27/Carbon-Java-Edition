@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 /** SQLite lifecycle and explicit, transactional schema migrations. Artwork pixels stay in .carbon files. */
 public final class CarbonDatabase implements AutoCloseable {
-    public static final int SCHEMA_VERSION=1;
+    public static final int SCHEMA_VERSION=2;
     private final Connection connection;
     private CarbonDatabase(Connection connection){this.connection=connection;}
     public static CarbonDatabase open(Path path)throws SQLException,IOException{
@@ -38,6 +38,12 @@ public final class CarbonDatabase implements AutoCloseable {
                     s.executeUpdate("CREATE TABLE IF NOT EXISTS projects(id TEXT PRIMARY KEY,uuid TEXT NOT NULL UNIQUE,name TEXT NOT NULL,path TEXT NOT NULL UNIQUE,thumbnail_path TEXT,last_opened INTEGER NOT NULL,modified INTEGER NOT NULL,bytes INTEGER NOT NULL DEFAULT 0,deleted INTEGER NOT NULL DEFAULT 0)");
                     s.executeUpdate("CREATE INDEX IF NOT EXISTS idx_projects_recent ON projects(deleted,last_opened DESC)");
                     s.executeUpdate("INSERT OR IGNORE INTO schema_migrations(version,applied_at) VALUES(1,"+System.currentTimeMillis()+")");s.execute("PRAGMA user_version=1");
+                }
+            }
+            if(version<2){
+                try(Statement s=connection.createStatement()){
+                    s.executeUpdate("CREATE TABLE IF NOT EXISTS themes(id TEXT PRIMARY KEY,name TEXT NOT NULL,category TEXT NOT NULL,mode TEXT NOT NULL,payload_json TEXT NOT NULL,updated_at INTEGER NOT NULL)");
+                    s.executeUpdate("INSERT OR IGNORE INTO schema_migrations(version,applied_at) VALUES(2,"+System.currentTimeMillis()+")");s.execute("PRAGMA user_version=2");
                 }
             }
             connection.commit();

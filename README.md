@@ -14,6 +14,8 @@ A Java desktop migration of **Carbon: Prime 7.9.9+ls**, separated from the TypeS
 - `.carbon` v1 ZIP/JSON/PNG reading/writing, required-payload validation, unknown JSON/entry preservation, atomic saves, backups, and reopen support.
 - SQLite/JDBC schema migrations and prepared-statement settings/palette/project-index repositories. Artwork remains in project files, not per-pixel database rows.
 - A programmatic JavaFX workspace with interactive tools, layer controls, document tabs, file dialogs, close guards, and autosave/recovery wiring. It has compiled, but not launched in this sandbox.
+- Nested `.carboncomic` pages, SVG with real Ink paths/explicit raster fallback, JDBC brush packs/custom themes, and Theme Studio v1/v2 validation.
+- A Windows `jpackage` PowerShell script and CI workflow. They are configuration only until executed on Windows.
 
 See [the evidence report](docs/VERIFICATION.md) and [all 60 migration groups](docs/FEATURE_MIGRATION.md) for precise limitations. No performance parity, full `.carbon` interoperability, GUI, or Windows installer claim is made.
 

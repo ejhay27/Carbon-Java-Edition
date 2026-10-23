@@ -25,6 +25,8 @@ Thumbs.db
 *.sqlite3
 *.carbon
 *.carboncomic
+!src/test/resources/**/*.carbon
+!src/test/resources/**/*.carboncomic
 *.bak
 *.tmp
 .carbon/

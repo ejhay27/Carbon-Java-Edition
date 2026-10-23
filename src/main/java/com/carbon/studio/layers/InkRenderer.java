@@ -21,9 +21,11 @@ public final class InkRenderer {
         for(InkStroke stroke:layer.getStrokes())drawStroke(g,stroke);g.dispose();return out;
     }
     public static void drawStroke(Graphics2D g,InkStroke stroke){
-        List<Double> p=stroke.getPoints();if(p.size()<3)return;Color color=ColorUtil.parse(stroke.getColor());
-        g.setPaint(new Color(color.getRed(),color.getGreen(),color.getBlue(),(int)Math.round(color.getAlpha()*stroke.getOpacity())));
-        if(p.size()==3){double r=stroke.getSize()*Math.max(0.1,p.get(2))/2;g.fill(new Ellipse2D.Double(p.get(0)-r,p.get(1)-r,r*2,r*2));return;}
+        if(stroke.getPoints().size()<3)return;Color color=ColorUtil.parse(stroke.getColor());g.setPaint(new Color(color.getRed(),color.getGreen(),color.getBlue(),(int)Math.round(color.getAlpha()*stroke.getOpacity())));g.fill(outline(stroke));
+    }
+    public static java.awt.Shape outline(InkStroke stroke){
+        List<Double> p=stroke.getPoints();if(p.size()<3)return new Path2D.Double();
+        if(p.size()==3){double r=stroke.getSize()*Math.max(0.1,p.get(2))/2;return new Ellipse2D.Double(p.get(0)-r,p.get(1)-r,r*2,r*2);}
         int count=p.size()/3;double[][] pts=new double[count][];for(int i=0;i<count;i++)pts[i]=new double[]{p.get(i*3),p.get(i*3+1),p.get(i*3+2)};
         int samples=Math.max(8,(count-1)*12);List<Point2D.Double>left=new ArrayList<>(samples+1),right=new ArrayList<>(samples+1);
         for(int i=0;i<=samples;i++){
@@ -34,7 +36,7 @@ public final class InkRenderer {
             left.add(new Point2D.Double(q[0]+nx,q[1]+ny));right.add(new Point2D.Double(q[0]-nx,q[1]-ny));
         }
         Path2D.Double outline=new Path2D.Double();outline.moveTo(left.get(0).x,left.get(0).y);for(int i=1;i<left.size();i++)outline.lineTo(left.get(i).x,left.get(i).y);
-        for(int i=right.size()-1;i>=0;i--)outline.lineTo(right.get(i).x,right.get(i).y);outline.closePath();g.fill(outline);
+        for(int i=right.size()-1;i>=0;i--)outline.lineTo(right.get(i).x,right.get(i).y);outline.closePath();return outline;
     }
     private static double taper(InkStroke s,double progress,int count){
         double value=s.getTaperStart()>0?Math.min(1,progress*count/s.getTaperStart()):1;

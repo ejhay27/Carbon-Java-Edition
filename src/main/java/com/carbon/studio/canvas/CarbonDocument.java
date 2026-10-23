@@ -14,7 +14,7 @@ import java.util.UUID;
 
 /** UI-independent editable Carbon document. Layers are ordered bottom to top. */
 public class CarbonDocument {
-    public static final int MAX_SIDE=8192,MAX_AREA=40_000_000,MAX_LAYERS=64;
+    public static final int MIN_SIDE=16,MAX_SIDE=8192,MAX_AREA=40_000_000,MAX_LAYERS=64;
     private int width,height;
     private String name;
     private String background;
@@ -48,7 +48,7 @@ public class CarbonDocument {
         return new CarbonDocument(width,height,name,background,uuid);
     }
     public static void validateDimensions(int width,int height){
-        if(width<1||height<1)throw new IllegalArgumentException("Canvas width and height must be positive.");
+        if(width<MIN_SIDE||height<MIN_SIDE)throw new IllegalArgumentException("Canvas must be at least 16×16 pixels.");
         if(width>MAX_SIDE||height>MAX_SIDE)throw new IllegalArgumentException("Canvas sides cannot exceed 8192 pixels.");
         if((long)width*height>MAX_AREA)throw new IllegalArgumentException("Canvas cannot exceed 40 megapixels.");
     }
