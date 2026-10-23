@@ -1,0 +1,40 @@
+# Maven and Java build output
+target/
+build/
+out/
+release/
+*.class
+*.jar
+*.jpackage.xml
+
+# IDE and OS files
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store
+Thumbs.db
+
+# Local runtime state and personal artwork
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.carbon
+*.carboncomic
+*.bak
+*.tmp
+.carbon/
+
+# Logs and crash dumps
+*.log
+hs_err_pid*
+
+# Never commit credentials or local environment overrides
+.env
+.env.*
+!/.env.example
+.mvn/maven.config.local
