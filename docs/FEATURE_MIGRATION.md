@@ -4,40 +4,40 @@ Status values distinguish implementation from evidence. **Migrated—requires fu
 
 | ID | Audited Carbon feature | Java implementation / acceptance target | Status |
 |---|---|---|---|
-| F01 | Document creation, background and 8192px/40MP limits | `CarbonDocument`, creation dialog and dimension validation | Not migrated — foundation planned |
-| F02 | Zoom, pan, fit, actual size, rotate and mirror viewport | `Viewport`, JavaFX canvas coordinate transforms | Not migrated — core planned |
+| F01 | Document creation, background and 8192px/40MP limits | Migrated—requires further testing — core creation/limits; dialog pending | Not migrated — foundation planned |
+| F02 | Zoom, pan, fit, actual size, rotate and mirror viewport | Migrated—requires further testing — viewport core; JavaFX interaction pending | Not migrated — core planned |
 | F03 | Grid, rulers, draggable guides, perspective display | Canvas overlays and persisted view preferences | Not migrated — core planned |
-| F04 | Normal dry build-up brush | Seeded incremental `StrokeEngine` | Not migrated — core planned |
+| F04 | Normal dry build-up brush | Migrated—requires further testing — incremental dry brush; parity/UI pending | Not migrated — core planned |
 | F05 | Watercolor wash, wet edges, granulation and blooms | Java2D wash renderer and regional post-processing | Not migrated — engine parity required |
 | F06 | Paint-mixing brushes | Under-color pickup and carry state | Not migrated — engine parity required |
 | F07 | Smudge/blending brushes | Premultiplied carry and regional sampling | Not migrated — engine parity required |
 | F08 | Procedural tips, spacing, stabilization, jitter, pressure/tilt/speed dynamics | Data-driven brush and deterministic dab renderer | Not migrated — engine parity required |
-| F09 | Vertical, horizontal, quad and radial symmetry | Mirrored/rotated dab transforms | Not migrated — core planned |
-| F10 | Eraser and independent eraser presets | Alpha erasing and preset selection | Not migrated — core planned |
-| F11 | Built-in base and Windows brush library | 152 extracted definitions in `brushes.json` | Not migrated — resource ported; rendering/UI pending |
+| F09 | Vertical, horizontal, quad and radial symmetry | Migrated—requires further testing — symmetry core; interaction/parity pending | Not migrated — core planned |
+| F10 | Eraser and independent eraser presets | Migrated—requires further testing — alpha eraser/presets; UI pending | Not migrated — core planned |
+| F11 | Built-in base and Windows brush library | Migrated—requires further testing — 152 definitions loaded by test; UI/parity pending | Not migrated — resource ported; rendering/UI pending |
 | F12 | Brush Studio, custom brushes and custom erasers | Editors, previews and JDBC preset repositories | Not migrated — UI/persistence planned |
-| F13 | Offline catalog, pack install/remove and `.carbonpack` transfer | 19 packs/396 presets, bounded import/export and JDBC assets | Not migrated — resource ported; workflows pending |
+| F13 | Offline catalog, pack install/remove and `.carbonpack` transfer | Migrated—requires further testing — catalog/import/export core; JDBC/UI pending | Not migrated — resource ported; workflows pending |
 | F14 | Brush Fusion recipes and dual stamp pass | Fusion editor and renderer support | Not migrated — advanced brush work |
 | F15 | Bounded QR brush sharing/scanning | Local QR encode/decode without camera requirement | Not migrated — advanced asset work |
 | F16 | Color Studio, HSL/RGB, recent colors and palettes | Color controls and normalized JDBC palettes | Not migrated — core/UI planned |
 | F17 | Canvas picker/loupe and system screen picker | Composite/active-layer sampling; native screen-picker adapter | Not migrated — canvas picker first |
-| F18 | Raster layers, visibility, lock, opacity, order, duplicate, merge, clear | Layer model, commands and panel | Not migrated — core planned |
-| F19 | Alpha lock, masks, clipping and reference layers | Paint constraints and compositor support | Not migrated — advanced layer work |
+| F18 | Raster layers, visibility, lock, opacity, order, duplicate, merge, clear | Migrated—requires further testing — undoable layer core; panel pending | Not migrated — core planned |
+| F19 | Alpha lock, masks, clipping and reference layers | Migrated—requires further testing — alpha/mask/clip core; complete acceptance pending | Not migrated — advanced layer work |
 | F20 | Group and adjustment layers | Structural model and non-destructive compositor | Not migrated — advanced layer work |
-| F21 | 18 layer blend modes | Java2D compositor equivalents and tests | Not migrated — core planned |
-| F22 | Region undo/redo, history labels and memory/step limits | Tile edits, structural edits and `HistoryManager` | Not migrated — core planned |
+| F21 | 18 layer blend modes | Migrated—requires further testing — 18 modes smoke-tested; visual parity pending | Not migrated — core planned |
+| F22 | Region undo/redo, history labels and memory/step limits | Migrated—requires further testing — tiled undo/redo tested; soak/memory acceptance pending | Not migrated — core planned |
 | F23 | Creative Time Machine snapshots and comparison | Versioned file snapshots, metadata and compare UI | Not migrated — persistence feature |
-| F24 | Rectangle/ellipse/circle/freehand/polygon selection, invert/fill/clear | Selection model and tool interactions | Not migrated — core planned |
+| F24 | Rectangle/ellipse/circle/freehand/polygon selection, invert/fill/clear | Migrated—requires further testing — selection/fill core; complete tool UI pending | Not migrated — core planned |
 | F25 | Move and raster/vector transforms | Affine sessions, commit/cancel and undo | Not migrated — core planned |
-| F26 | Flood fill, tolerance, reference sampling and expansion | Scanline/queue fill with selection constraints | Not migrated — core planned |
-| F27 | Line, rectangle, ellipse and rasterized text | Shape sampling and text placement | Not migrated — core planned |
-| F28 | Linear/radial gradients and editable stops | Java2D gradient paint and editor | Not migrated — editing feature |
+| F26 | Flood fill, tolerance, reference sampling and expansion | Migrated—requires further testing — queue fill tested; reference-layer sampling pending | Not migrated — core planned |
+| F27 | Line, rectangle, ellipse and rasterized text | Migrated—requires further testing — shape/text core; interaction acceptance pending | Not migrated — core planned |
+| F28 | Linear/radial gradients and editable stops | Migrated—requires further testing — gradient core; stop editor/tests pending | Not migrated — editing feature |
 | F29 | Filters and liquify | Region filters and warp operations | Not migrated — editing feature |
 | F30 | Crisp Ink draw/select/move/point edit/recolor/taper/split-erase/rasterize | Vector paths, outline renderer and editor | Not migrated — vector engine required |
 | F31 | PNG/JPEG/WebP/GIF import and embedded project assets | ImageIO adapters, asset payloads and limits | Not migrated — compatibility planned |
 | F32 | Scaled PNG/JPEG/WebP export, transparency and quality | Background export service with truthful format support | Not migrated — compatibility planned |
 | F33 | SVG with real Crisp Ink vectors and explicit raster fallback | Versioned SVG exporter; no raster mislabeled as vector | Not migrated — compatibility planned |
-| F34 | `.carbon` v1 save/open/Save As/Copy/duplicate | ZIP/JSON/PNG codec, verification and safe writes | Not migrated — compatibility planned |
+| F34 | `.carbon` v1 save/open/Save As/Copy/duplicate | Migrated—requires further testing — v1 codec/save core tested; complete UI/workflows pending | Not migrated — compatibility planned |
 | F35 | `.carboncomic` multi-page save/open | Nested Carbon pages and index validation | Not migrated — compatibility planned |
 | F36 | Autosave, hidden/lifecycle save and session recovery | Recovery files, JDBC generations and restore prompts | Not migrated — persistence planned |
 | F37 | Recents and Project Library open/rename/duplicate/delete/export/search/pin/sort | JDBC project repository and library UI | Not migrated — persistence planned |
@@ -60,17 +60,17 @@ Status values distinguish implementation from evidence. **Migrated—requires fu
 | F54 | Carbon Home, local coast artwork and optional surf motion | JavaFX Home and licensed/source assets | Not migrated — UI feature |
 | F55 | Offline Quick Start and fresh editable sample | Guide and sample-document factory | Not migrated — UI feature |
 | F56 | Diagnostics, release archive, About and Project Information | Headless/UI diagnostics and original credits/copy | Not migrated — verification UI |
-| F57 | Local-first durable settings and metadata | SQLite/JDBC, migrations and OS application-data path | Not migrated — foundation planned |
-| F58 | Verified writes, overwrite protection and invalid/newer file rejection | Atomic writer, version guards and failure tests | Not migrated — compatibility planned |
+| F57 | Local-first durable settings and metadata | Migrated—requires further testing — JDBC settings/palettes/migrations tested; full app wiring pending | Not migrated — foundation planned |
+| F58 | Verified writes, overwrite protection and invalid/newer file rejection | Migrated—requires further testing — atomic/rejection tests; GUI overwrite acceptance pending | Not migrated — compatibility planned |
 | F59 | Responsive large-canvas behavior and off-UI-thread work | Tile history, bounded caches and background services | Not migrated — performance acceptance required |
 | F60 | Reproducible Windows runtime and optional EXE installer | `jpackage` scripts, CI and independent Windows launch | Not migrated — Windows packaging required |
 
-## Initial totals
+## Current totals
 
 - Feature groups identified: **60**.
 - Migrated and verified: **0**.
-- Migrated but requires further testing: **0**.
+- Migrated but requires further testing: **18**.
 - Blocked for the first increment: **1** (F52; full stylus/tilt hardware contract).
-- Not migrated at audit completion: **59**.
+- Not migrated: **41**.
 
-These totals are a starting audit, not a completion claim. Update both the rows and totals after each verified increment.
+These totals reflect the 2026-10-23 core checkpoint: 19 focused JUnit tests passed. No row is fully verified yet because UI, cross-compatibility, or platform acceptance remains. Update both rows and totals only with new evidence.
