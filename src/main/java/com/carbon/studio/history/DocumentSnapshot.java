@@ -12,16 +12,17 @@ public final class DocumentSnapshot {
     private final String background,activeLayerId;
     private final Selection selection;
     private final List<Layer> layers;
+    private final java.util.Map<String,com.carbon.studio.storage.AssetData> assets;
     private DocumentSnapshot(CarbonDocument d){
         width=d.getWidth();height=d.getHeight();background=d.getBackground();activeLayerId=d.getActiveLayerId();
-        selection=d.getSelection();List<Layer> copy=new ArrayList<>();for(Layer l:d.getLayers())copy.add(l.snapshot());layers=List.copyOf(copy);
+        selection=d.getSelection();List<Layer> copy=new ArrayList<>();for(Layer l:d.getLayers())copy.add(l.snapshot());layers=List.copyOf(copy);assets=new java.util.LinkedHashMap<>(d.getAssets());
     }
     public static DocumentSnapshot capture(CarbonDocument d){return new DocumentSnapshot(d);}
     public void restore(CarbonDocument d){
         d.resizeDocument(width,height);
         // Background setters mark dirty; history controls the final dirty state.
         d.restoreLayers(layers.stream().map(Layer::snapshot).toList(),activeLayerId);
-        d.setSelection(selection);
+        d.setSelection(selection);d.restoreAssets(assets);
         setBackgroundWithoutSideEffects(d,background);
     }
     private static void setBackgroundWithoutSideEffects(CarbonDocument d,String value){
@@ -30,6 +31,6 @@ public final class DocumentSnapshot {
         d.setBackground(value);
     }
     public long estimatedBytes(){
-        long bytes=0;for(Layer l:layers){bytes+=com.carbon.studio.canvas.Images.bytes(l.getImage());bytes+=com.carbon.studio.canvas.Images.bytes(l.getMask());}return bytes;
+        long bytes=0;for(Layer l:layers){bytes+=com.carbon.studio.canvas.Images.bytes(l.getImage());bytes+=com.carbon.studio.canvas.Images.bytes(l.getMask());}for(var asset:assets.values())bytes+=asset.byteCount();return bytes;
     }
 }

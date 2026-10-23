@@ -15,6 +15,7 @@ public final class AssetData {
     public String id(){return id;}
     public String mime(){return mime;}
     public byte[] bytes(){return bytes.clone();}
+    public long byteCount(){return bytes.length;}
     byte[] unsafeBytes(){return bytes;}
     @Override public boolean equals(Object o){return o instanceof AssetData a&&id.equals(a.id)&&mime.equals(a.mime)&&Arrays.equals(bytes,a.bytes);}
     @Override public int hashCode(){return 31*(31*id.hashCode()+mime.hashCode())+Arrays.hashCode(bytes);}

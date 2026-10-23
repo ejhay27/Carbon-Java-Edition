@@ -6,17 +6,19 @@ Date: **2026-10-23**. This report distinguishes executed checks from pending pro
 
 The current core was compiled with **ECJ 3.45.0** and run on **Temurin JRE 17.0.19+10** because this sandbox does not provide a Java 21 JDK or resolvable Maven Central connection. The source remains targeted to Java 21 in `pom.xml`; the Java 17 fallback is an early core check, not the supported product build.
 
-Result: **19 JUnit 4 tests passed, 0 failed**.
+Result: **26 JUnit 4 tests passed, 0 failed**.
 
 | Suite | Tests | What was actually exercised |
 |---|---:|---|
-| `DrawingEngineTest` | 5 | Real stroke pixels, undo/redo, partial 64×64 edge tiles, eraser, alpha lock, clipped flood fill, duplicate/merge/resize undo |
+| `DrawingEngineTest` | 6 | Real stroke pixels, undo/redo, partial 64×64 edge tiles, eraser, alpha lock, clipped flood fill, duplicate/merge/resize undo, Ink/selection scaling |
 | `ViewportAndCompositeTest` | 4 | Rotated/flipped viewport round-trip, background/visibility compositing, smoke execution of all 18 blend modes, inverted selection |
 | `CarbonArchiveTest` | 3 | Raster/Ink/mask/asset/selection round-trip, unknown entry/JSON preservation across a second save, newer/missing payload rejection, existing-file preservation after failed save |
 | `BrushPresetLibraryTest` | 4 | 152 base brushes, 19 packs/396 presets, pack import/export, duplicate rejection, multi-field search |
 | `DatabaseTest` | 3 | Schema migration/reopen, JSON settings, prepared-statement palettes with hostile names, metadata-only schema |
+| `ProjectLifecycleTest` | 3 | Multiple tabs/history, close guard, background-save revision race, recovery restore/discard |
+| `ImageIOServiceTest` | 3 | Real PNG import/export, scaling behavior, JPEG dimensions/opacity, asset undo, JDBC recents/rename/soft delete |
 
-The tests ran headlessly against compiled Java classes and the real bundled brush/theme resources. They do not mock pixel writes, archive reads, or SQL queries.
+The tests ran headlessly against compiled Java classes and the real bundled brush/theme resources. Separately, every production class—including the JavaFX workspace—compiled without errors against JavaFX 21.0.1 API jars. The mirror contains Windows natives, so this is API compile evidence only and did not launch a Linux GUI. They do not mock pixel writes, archive reads, or SQL queries.
 
 ### SQLite driver check
 
@@ -29,7 +31,7 @@ Before Java implementation edits, the untouched authoritative Carbon 7.9.9 tree 
 ## Not established
 
 - No `mvn clean test` has run: Maven dependencies/plugins cannot currently be resolved in the sandbox.
-- No Java 21 compiler, JavaFX runtime, GUI launch, or physical stylus test has run.
+- No Java 21 compiler or physical stylus test has run. JavaFX 21 API compilation passed, but no JavaFX GUI launch has run.
 - No Windows build, `jpackage` image, installer, or Windows launch has been produced.
 - No automated golden-image comparison against TypeScript rendering has run.
 - No large-canvas soak, memory profile, responsiveness measurement, or performance parity result exists.
@@ -45,3 +47,7 @@ mvn clean test
 ```
 
 Later GUI/package commands will be documented only when their entry points and packaging configuration actually exist.
+
+## GUI acceptance still required
+
+When a JavaFX desktop runtime is available, manually verify: initial window/layout; every tool on an actual canvas; pan/zoom/rotation/mirror coordinate accuracy; layer selection and visibility; tab switching; dirty titles; Save/Save As/reopen; cancel/overwrite paths; import/export dialogs; recovery prompt; and clean application shutdown. None of those manual checks is represented as complete here.

@@ -92,6 +92,7 @@ public class CarbonDocument {
     public Viewport getViewport(){return viewport;}
     public Map<String,AssetData> getAssets(){return Collections.unmodifiableMap(assets);}
     public void putAsset(AssetData asset){assets.put(asset.id(),asset);}
+    public void restoreAssets(Map<String,AssetData> restored){assets.clear();if(restored!=null)assets.putAll(restored);}
     public Map<String,byte[]> getPreservedEntries(){return preservedEntries;}
     public JsonObject getExtensions(){return extensions.deepCopy();}
     public void setExtensions(JsonObject extensions){this.extensions=extensions==null?new JsonObject():extensions.deepCopy();}
@@ -109,4 +110,16 @@ public class CarbonDocument {
     public void markDirty(){dirty=true;revision++;}
     public String getSaveError(){return saveError;}
     public void setSaveError(String saveError){this.saveError=saveError;}
+    /**
+     * Stable copy-on-write state for background save/autosave. Call on the document mutation thread.
+     * Pixels are shared until a subsequent editing command detaches its layer.
+     */
+    public CarbonDocument copyForIo(){
+        CarbonDocument copy=CarbonDocument.empty(width,height,name,background,uuid);
+        copy.restoreLayers(layers.stream().map(Layer::snapshot).toList(),activeLayerId);copy.setSelection(selection);
+        copy.setExtensions(extensions);copy.setManifestMetadata(manifestMetadata);copy.setPreservedManifest(preservedManifest);copy.setKind(kind);copy.setFilePath(filePath);
+        for(AssetData asset:assets.values())copy.putAsset(asset);
+        for(var entry:preservedEntries.entrySet())copy.preservedEntries.put(entry.getKey(),entry.getValue().clone());
+        copy.dirty=dirty;copy.revision=revision;copy.saveError=saveError;return copy;
+    }
 }

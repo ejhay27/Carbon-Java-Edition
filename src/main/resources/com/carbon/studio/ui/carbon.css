@@ -1,0 +1,44 @@
+.root {
+  -fx-font-family: "Inter", "Segoe UI", sans-serif;
+  -fx-font-size: 13px;
+  -fx-base: #222731;
+  -fx-background: #222731;
+  -fx-control-inner-background: #171b22;
+  -fx-accent: #66e0d4;
+  -fx-focus-color: #66e0d4;
+  -fx-faint-focus-color: #66e0d422;
+}
+.menu-bar, .tool-bar, .tab-pane, .scroll-pane, .list-view, .combo-box, .spinner, .color-picker {
+  -fx-background-color: #20252e;
+}
+.menu-bar { -fx-padding: 2px 6px; }
+.menu:hover, .menu-item:focused, .button:hover, .toggle-button:hover { -fx-background-color: #303846; }
+.label, .text, .list-cell, .menu, .menu-item, .tab-label { -fx-text-fill: #d6ddec; }
+.button, .toggle-button {
+  -fx-background-color: #2a303b;
+  -fx-text-fill: #d6ddec;
+  -fx-background-radius: 5px;
+  -fx-border-radius: 5px;
+  -fx-cursor: hand;
+}
+.toggle-button:selected {
+  -fx-background-color: #376b69;
+  -fx-text-fill: white;
+}
+.text-field, .text-area, .list-view, .scroll-pane > .viewport {
+  -fx-background-color: #171b22;
+  -fx-text-fill: #d6ddec;
+}
+.list-cell:selected { -fx-background-color: #36515b; }
+.panel-title {
+  -fx-text-fill: #76e4d9;
+  -fx-font-weight: bold;
+  -fx-font-size: 11px;
+  -fx-padding: 3px 0;
+}
+.tab-pane .tab-header-area .tab-header-background { -fx-background-color: #171b22; }
+.tab-pane .tab { -fx-background-color: #252b35; }
+.tab-pane .tab:selected { -fx-background-color: #35414c; }
+.slider .track { -fx-background-color: #11151b; }
+.scroll-bar:horizontal, .scroll-bar:vertical { -fx-background-color: #20252e; }
+.tooltip { -fx-background-color: #303846; -fx-text-fill: white; }

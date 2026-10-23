@@ -34,14 +34,14 @@ Status values distinguish implementation from evidence. **Migrated—requires fu
 | F28 | Linear/radial gradients and editable stops | Migrated—requires further testing — gradient core; stop editor/tests pending | Not migrated — editing feature |
 | F29 | Filters and liquify | Region filters and warp operations | Not migrated — editing feature |
 | F30 | Crisp Ink draw/select/move/point edit/recolor/taper/split-erase/rasterize | Vector paths, outline renderer and editor | Not migrated — vector engine required |
-| F31 | PNG/JPEG/WebP/GIF import and embedded project assets | ImageIO adapters, asset payloads and limits | Not migrated — compatibility planned |
-| F32 | Scaled PNG/JPEG/WebP export, transparency and quality | Background export service with truthful format support | Not migrated — compatibility planned |
+| F31 | PNG/JPEG/WebP/GIF import and embedded project assets | Migrated—requires further testing — ImageIO import/assets tested; WebP/plugin acceptance pending | Not migrated — compatibility planned |
+| F32 | Scaled PNG/JPEG/WebP export, transparency and quality | Migrated—requires further testing — scaled PNG/JPEG export tested; remaining formats/UI pending | Not migrated — compatibility planned |
 | F33 | SVG with real Crisp Ink vectors and explicit raster fallback | Versioned SVG exporter; no raster mislabeled as vector | Not migrated — compatibility planned |
 | F34 | `.carbon` v1 save/open/Save As/Copy/duplicate | Migrated—requires further testing — v1 codec/save core tested; complete UI/workflows pending | Not migrated — compatibility planned |
 | F35 | `.carboncomic` multi-page save/open | Nested Carbon pages and index validation | Not migrated — compatibility planned |
-| F36 | Autosave, hidden/lifecycle save and session recovery | Recovery files, JDBC generations and restore prompts | Not migrated — persistence planned |
+| F36 | Autosave, hidden/lifecycle save and session recovery | Migrated—requires further testing — recovery files/restore tested; lifecycle/UI acceptance pending | Not migrated — persistence planned |
 | F37 | Recents and Project Library open/rename/duplicate/delete/export/search/pin/sort | JDBC project repository and library UI | Not migrated — persistence planned |
-| F38 | Multiple documents, tabs, close guards and session restore | `ProjectManager` and session metadata | Not migrated — lifecycle planned |
+| F38 | Multiple documents, tabs, close guards and session restore | Migrated—requires further testing — tabs/lifecycle core and close guards; session restore/GUI pending | Not migrated — lifecycle planned |
 | F39 | Drawing Replay recording, markers, epochs and memory cap | Serializable command journal and checkpoints | Not migrated — replay engine required |
 | F40 | Replay play/pause/seek/speed/isolated reconstruction | Independent replay document and transport | Not migrated — replay engine required |
 | F41 | Encoder-dependent replay video export | Real encoder integration or explicit unsupported result | Not migrated — no synthetic video |
@@ -69,8 +69,8 @@ Status values distinguish implementation from evidence. **Migrated—requires fu
 
 - Feature groups identified: **60**.
 - Migrated and verified: **0**.
-- Migrated but requires further testing: **18**.
+- Migrated but requires further testing: **22**.
 - Blocked for the first increment: **1** (F52; full stylus/tilt hardware contract).
-- Not migrated: **41**.
+- Not migrated: **37**.
 
-These totals reflect the 2026-10-23 core checkpoint: 19 focused JUnit tests passed. No row is fully verified yet because UI, cross-compatibility, or platform acceptance remains. Update both rows and totals only with new evidence.
+These totals reflect the 2026-10-23 core checkpoint: 26 focused JUnit tests passed. No row is fully verified yet because UI, cross-compatibility, or platform acceptance remains. Update both rows and totals only with new evidence.

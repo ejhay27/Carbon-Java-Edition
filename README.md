@@ -12,7 +12,8 @@ A Java desktop migration of **Carbon: Prime 7.9.9+ls**, separated from the TypeS
 - Crisp Ink path storage, outline rendering, and rasterization foundation.
 - Audited offline data: 152 base brushes, 19 packs with 396 presets, and 40 themes.
 - `.carbon` v1 ZIP/JSON/PNG reading/writing, required-payload validation, unknown JSON/entry preservation, atomic saves, backups, and reopen support.
-- SQLite/JDBC schema migrations and prepared-statement settings/palette repositories. Artwork remains in project files, not per-pixel database rows.
+- SQLite/JDBC schema migrations and prepared-statement settings/palette/project-index repositories. Artwork remains in project files, not per-pixel database rows.
+- A programmatic JavaFX workspace with interactive tools, layer controls, document tabs, file dialogs, close guards, and autosave/recovery wiring. It has compiled, but not launched in this sandbox.
 
 See [the evidence report](docs/VERIFICATION.md) and [all 60 migration groups](docs/FEATURE_MIGRATION.md) for precise limitations. No performance parity, full `.carbon` interoperability, GUI, or Windows installer claim is made.
 
@@ -29,7 +30,7 @@ The normal verification command is:
 mvn clean test
 ```
 
-A JavaFX entry point and packaged application are not delivered yet, so there is no supported `javafx:run` or installer command at this checkpoint.
+The JavaFX entry point is `com.carbon.studio.CarbonLauncher`. On a desktop with the dependencies resolved, run `mvn javafx:run`. This command has not executed in the sandbox. No installer command is claimed yet.
 
 ## Source layout
 
